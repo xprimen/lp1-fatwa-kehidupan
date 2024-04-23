@@ -17,8 +17,8 @@ function SummaryBaksos() {
             </h2>
             <p className="text-lg/relaxed">
               Bakti Sosial dilakukan sejak Tahun 2017 sampai dengan Sekarang
-              kepada masyarakat yang membutuhkan, termasuk Kobran Bencana yang
-              terjadi di Seluruh Wilayah Indonesia.
+              kepada masyarakat yang membutuhkan, termasuk Korban Bencana Alam
+              yang terjadi di Seluruh Wilayah Indonesia.
             </p>
             <div className="flex flex-row items-center space-x-12">
               <div className="flex flex-col space-y-6">

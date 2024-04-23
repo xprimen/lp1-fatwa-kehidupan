@@ -69,7 +69,7 @@ const Hero = () => {
         isEnableNavButton={false}
         isEnablePagination={false}
         isEnableLoop
-        isLazy
+        // isLazy
         isEnableAutoPlay
         className="-z-10"
         renderLazyPreloader={() => (

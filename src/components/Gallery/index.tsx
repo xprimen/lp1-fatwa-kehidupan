@@ -1,3 +1,5 @@
+import { googleDriveImage } from "@/helpers/googleToolHelper";
+import Image from "next/image";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
 
@@ -9,7 +11,7 @@ function Gallery() {
           <h2 className="text-3xl font-bold text-center">
             Kegiatan Terbaru Bakti Sosial Yayasan Padepokan Fatwa Kehidupan
           </h2>
-          <iframe
+          {/* <iframe
             //   width="560"
             //   height="315"
             src="https://www.youtube.com/embed/Ddxhc-q-dgY?si=qS9VqfjWR2PD_XyS&amp;controls=0"
@@ -19,7 +21,19 @@ function Gallery() {
             referrerPolicy="strict-origin-when-cross-origin"
             //   allowfullscreen
             className="w-full aspect-video rounded-lg"
-          ></iframe>
+          ></iframe> */}
+
+          <Image
+            src={googleDriveImage(
+              "https://drive.google.com/file/d/14StlZD7jG361mXfHfPJaafgn5mfw8saI/view?usp=sharing",
+              "w1080"
+            )}
+            width={1080}
+            height={1080}
+            objectFit="cover"
+            className="w-full rounded-lg "
+            alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+          />
         </Fade>
       </div>
     </section>

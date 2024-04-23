@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Yayasan Padepokan Fatwa Kehidupan",
   description: "Landing Page 1 Fatwa Kehidupan",
+  icons: "logo.ico",
 };
 
 export default function RootLayout({
