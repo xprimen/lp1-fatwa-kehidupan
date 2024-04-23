@@ -2,32 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* :root {
+  --animate-duration: 1600ms;
+} */
+
+/* .bear-react-carousel__container {
+  transform: none !important;
+  transition-duration: 0ms !important;
+} */
+
+/* #hero .bear-react-carousel__slide-item {
+  animation: fadeIn;
+  animation-duration: 2s;
+} */
+
+.wave-shape-divider-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.wave-shape-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(134% + 1.3px);
+  height: 45px;
+}
+
+.wave-shape-divider-bottom .shape-fill {
+  fill: #ffffff;
+}
+/* image gallery extend */
+@media (min-width: 640px) {
+  .wave-shape-divider-bottom svg {
+    height: 100px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (min-width: 1024px) {
+  .wave-shape-divider-bottom svg {
+    height: 245px;
   }
 }
