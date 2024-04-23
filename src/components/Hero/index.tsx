@@ -1,16 +1,13 @@
 import { googleDriveImage } from "@/helpers/googleToolHelper";
-import { mdiYoutube } from "@mdi/js";
-import Icon from "@mdi/react";
-import {
+import BearCarousel, {
   BearSlideCard,
-  BearSlideImage,
   IBearSlideItemData,
+  TMoveEffectFn,
   moveEffectFn,
 } from "bear-react-carousel";
-import BearCarousel from "bear-react-carousel";
 import Image from "next/image";
-import React, { useCallback } from "react";
-import { AttentionSeeker, Fade, Flip, Slide } from "react-awesome-reveal";
+import { useCallback } from "react";
+import { Fade } from "react-awesome-reveal";
 
 const slideItems = [
   {
@@ -30,15 +27,12 @@ const slideItems = [
 ];
 
 {
-  /* <BearSlideCard className="animate__animated animate__fadeIn animate__slow">
-            <Image
-              src={row.imageUrl}
-              fill
-              objectFit="cover"
-              objectPosition="center"
-              alt={row.id.toString()}
-            />
-          </BearSlideCard> */
+  /* <BearSlideImage
+            imageUrl={row.imageUrl}
+            className="animate animate__animated animate__fadeIn animate__slow"
+            imageSize="cover"
+          /> */
+  /*  */
 }
 
 const Hero = () => {
@@ -47,19 +41,31 @@ const Hero = () => {
       return {
         key: row.id,
         children: (
-          <BearSlideImage
-            imageUrl={row.imageUrl}
-            className="animate animate__animated animate__fadeIn animate__slow"
-            imageSize="cover"
-          />
+          <BearSlideCard>
+            <Image
+              src={row.imageUrl}
+              fill
+              objectFit="cover"
+              objectPosition="center"
+              alt={row.id.toString()}
+            />
+          </BearSlideCard>
         ),
       };
     });
     return bearSlideItemData;
   }, []);
 
+  const mainMoveEffectFn: TMoveEffectFn = useCallback((percentageInfo) => {
+    const transformY = 40;
+    return {
+      transform: `none`,
+      animation: "ease-in",
+    };
+  }, []);
+
   return (
-    <section id="hero" className="relative h-[400px] lg:h-[600px] xl:h-[800px]">
+    <section id="hero" className="relative h-[500px] lg:h-[600px] xl:h-[800px]">
       <BearCarousel
         data={slideData()}
         // height={{ widthRatio: 21, heightRatio: 9 }}
@@ -86,9 +92,10 @@ const Hero = () => {
             />
           </div>
         )}
-        moveTime={0}
+        // moveTime={0}
         moveEffect={{
-          moveFn: moveEffectFn.transformY(0),
+          // moveFn: moveEffectFn.transformY(0),
+          moveFn: mainMoveEffectFn,
         }}
         // isDebug
         /* breakpoints={{
@@ -152,7 +159,7 @@ const Hero = () => {
                   href="#transfer"
                   className="rounded bg-green-600 px-12 py-3 text-md font-medium text-white shadow hover:bg-green-700 focus:outline-none focus:ring active:bg-green-500 animate__delay-1s animate__infinite animate__pulse animate__animated"
                 >
-                  BERBAGI SEKARANG !
+                  Berdonasi
                 </a>
               </div>
             </Fade>
