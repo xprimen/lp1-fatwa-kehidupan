@@ -14,14 +14,14 @@ const slideItems = [
     id: 1,
     imageUrl: googleDriveImage(
       "https://drive.google.com/file/d/1fTVprGkUXPH9yx4t6Nq_13Xmms_ZRYVG/view?usp=sharing",
-      "w1080"
+      "w768"
     ),
   },
   {
     id: 2,
     imageUrl: googleDriveImage(
       "https://drive.google.com/file/d/14AFnb--FkyW2vOS63BALUrbO2lu1ANcw/view?usp=sharing",
-      "w1080"
+      "w768"
     ),
   },
 ];
