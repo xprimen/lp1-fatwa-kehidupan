@@ -1,0 +1,91 @@
+.alice-carousel {
+  height: inherit;
+  /* width: inherit; */
+}
+.alice-carousel > div {
+  height: inherit;
+}
+.alice-carousel > div > .alice-carousel__wrapper {
+  height: inherit;
+  /* display: flex;
+  overflow: hidden; */
+}
+
+.gallery > .alice-carousel {
+  height: 230px;
+}
+
+#carousel-thumbnails {
+  /* max-width: calc(50%+100px); */
+  height: 60px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 0 25px;
+  position: relative;
+}
+#carousel-thumbnails .btn-prev,
+#carousel-thumbnails .btn-next {
+  position: absolute;
+  top: calc(50% - 25px);
+  font-size: 30px;
+  height: inherit;
+  color: #9499a6;
+  cursor: pointer;
+  width: 30px;
+  text-align: center; /* width: 30px; */
+}
+#carousel-thumbnails .btn-prev {
+  left: 0;
+}
+#carousel-thumbnails .btn-next {
+  right: 0;
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .gallery > .alice-carousel {
+    height: 400px;
+  }
+  #carousel-thumbnails {
+    height: 120px;
+  }
+  #carousel-thumbnails .btn-prev,
+  #carousel-thumbnails .btn-next {
+    top: calc(50% - 30px);
+    font-size: 40px;
+  }
+}
+/* md */
+@media (min-width: 768px) {
+  .gallery > .alice-carousel {
+    height: 400px;
+  }
+  #carousel-thumbnails {
+    height: 120px;
+    padding: 0 50px;
+  }
+}
+/* lg */
+@media (min-width: 1024px) {
+  .gallery > .alice-carousel {
+    height: 550px;
+  }
+  #carousel-thumbnails {
+    height: 150px;
+  }
+  #carousel-thumbnails .btn-prev,
+  #carousel-thumbnails .btn-next {
+    position: absolute;
+    top: calc(50% - 30px);
+    font-size: 50px;
+    color: #9499a6;
+    cursor: pointer;
+    width: 50px;
+  }
+}
+/* xl */
+@media (min-width: 1280px) {
+}
+/* 2xl */
+@media (min-width: 1536px) {
+}

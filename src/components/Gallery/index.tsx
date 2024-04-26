@@ -1,18 +1,95 @@
-import Carousel from "@/features/Carousel";
+import Carousel, { TSendItems } from "@/features/Carousel";
 import { googleDriveImage } from "@/helpers/googleToolHelper";
 import Image from "next/image";
-import React from "react";
+import { Link } from "react-alice-carousel";
 import { Fade } from "react-awesome-reveal";
+
+const items = [
+  <div key={1} className="w-full h-[700px]">
+    <Image
+      key={0}
+      src={googleDriveImage(
+        "https://drive.google.com/file/d/14StlZD7jG361mXfHfPJaafgn5mfw8saI/view?usp=sharing",
+        "w1080"
+      )}
+      // width={1080}
+      // height={1080}
+      fill
+      objectFit="cover"
+      // data-value={1}
+      objectPosition="center"
+      className="rounded-xl"
+      alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+    />
+  </div>,
+  <div key={1} className="w-full h-[700px]">
+    <Image
+      src={googleDriveImage(
+        "https://drive.google.com/file/d/1fTVprGkUXPH9yx4t6Nq_13Xmms_ZRYVG/view?usp=sharing",
+        "w1080"
+      )}
+      // width={1080}
+      // height={1080}
+      fill
+      objectFit="cover"
+      // data-value={2}
+      objectPosition="center"
+      className="rounded-xl"
+      alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+    />
+  </div>,
+];
+
+const itemLink: TSendItems[] = [
+  {
+    type: "image",
+    src: googleDriveImage(
+      "https://drive.google.com/file/d/14StlZD7jG361mXfHfPJaafgn5mfw8saI/view?usp=sharing",
+      "w1080"
+    ),
+  },
+  {
+    type: "image",
+    src: googleDriveImage(
+      "https://drive.google.com/file/d/1fTVprGkUXPH9yx4t6Nq_13Xmms_ZRYVG/view?usp=sharing",
+      "w1080"
+    ),
+  },
+  {
+    type: "image",
+    src: googleDriveImage(
+      "https://drive.google.com/file/d/1XObYOiSNZwEnnc2wO9jVrsa48jGBw-Ad/view?usp=sharing",
+      "w1080"
+    ),
+  },
+  {
+    type: "image",
+    src: googleDriveImage(
+      "https://drive.google.com/file/d/1hOUD8NTokpoVSD5PEbBmcj-oR_Zlh3SR/view?usp=sharing",
+      "w1080"
+    ),
+  },
+];
 
 function Gallery() {
   return (
-    <section id="about" className="relative min-h-52 py-28 px-6">
+    <section id="about" className="relative py-28 px-6">
       <div className="mx-auto max-w-screen-xl flex flex-col justify-center space-y-8">
         <Fade direction="up" duration={1200} triggerOnce>
           <h2 className="text-3xl font-bold text-center">
             Kegiatan Terbaru Bakti Sosial Yayasan Padepokan Fatwa Kehidupan
           </h2>
-          {/* <iframe
+        </Fade>
+        <Fade direction="up" duration={1200} triggerOnce className="gallery">
+          <Carousel
+            sendItems={itemLink}
+            optionCarousel={{
+              infinite: true,
+            }}
+            enabledThumbs
+          />
+        </Fade>
+        {/* <iframe
             //   width="560"
             //   height="315"
             src="https://www.youtube.com/embed/Ddxhc-q-dgY?si=qS9VqfjWR2PD_XyS&amp;controls=0"
@@ -24,7 +101,7 @@ function Gallery() {
             className="w-full aspect-video rounded-lg"
           ></iframe> */}
 
-          {/* <Image
+        {/* <Image
             src={googleDriveImage(
               "https://drive.google.com/file/d/14StlZD7jG361mXfHfPJaafgn5mfw8saI/view?usp=sharing",
               "w1080"
@@ -35,7 +112,7 @@ function Gallery() {
             className="w-full rounded-lg "
             alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
           /> */}
-          <Carousel
+        {/* <Carousel
             carouselId="gallery-carousel"
             classNameForImage="animate__animated animate__fadeIn animate__slow"
             imgs={[
@@ -52,8 +129,8 @@ function Gallery() {
                 ),
               },
             ]}
-          />
-          {/* <div className="carousel w-full">
+          /> */}
+        {/* <div className="carousel w-full">
             <div id="slide1" className="carousel-item relative w-full">
               <Image
                 src={googleDriveImage(
@@ -89,7 +166,6 @@ function Gallery() {
               ❯
             </a>
           </div> */}
-        </Fade>
       </div>
     </section>
   );

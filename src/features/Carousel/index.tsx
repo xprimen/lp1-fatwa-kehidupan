@@ -1,122 +1,224 @@
 "use client";
+import { googleDriveImage } from "@/helpers/googleToolHelper";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
+import AliceCarousel, {
+  EventObject,
+  Props as AliceCarouselProps,
+} from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+import "./carouselAdd.css";
 
-type Iimg = {
+export type TSendItems = {
+  type: "link" | "image" | "video";
   src: string;
+  classWrapper?: string;
+  classImage?: string;
 };
 
-type IProps = {
-  imgs: Iimg[];
-  carouselId: string;
-  classNameCarousel?: string;
-  classNameForImage?: string;
-  isAutoPlay?: boolean;
-  autoPlayMilliseconds?: number;
+/* const items: React.ReactNode[] = [
+  <div key={0} className="item" data-value="1">
+    1
+  </div>,
+  <div key={1} className="item" data-value="2">
+    2
+  </div>,
+  <div key={2} className="item" data-value="3">
+    3
+  </div>,
+  <div key={3} className="item" data-value="4">
+    4
+  </div>,
+  <div key={4} className="item" data-value="5">
+    5
+  </div>,
+]; */
+
+const thumbItems = (
+  items: TSendItems[],
+  [setThumbIndex, setThumbAnimation]: [
+    React.Dispatch<React.SetStateAction<number>>,
+    React.Dispatch<React.SetStateAction<boolean>>
+  ]
+) => {
+  return items.map((item, i) => (
+    <div
+      key={i}
+      onClick={() => (setThumbIndex(i), setThumbAnimation(true))}
+      className={item.classWrapper && item.classWrapper}
+    >
+      <Image
+        src={item.src}
+        // width={1080}
+        // height={1080}
+        fill
+        objectFit="cover"
+        // data-value={1}
+        objectPosition="center"
+        className={item.classImage && item.classImage}
+        alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+      />
+    </div>
+  ));
 };
 
-const goToOtherImage = (href: string, carouselId: string) => {
-  const carousel = document.getElementById(carouselId);
-  if (carousel) {
-    const target = document.querySelector<HTMLDivElement>(href)!;
-    const left = target.offsetLeft;
-    carousel.scrollTo({ left: left });
-  }
+const itemsGenerate = (items: TSendItems[]): React.ReactNode[] => {
+  return items.map((item, i) => (
+    <div key={i} className={item.classWrapper && item.classWrapper}>
+      <Image
+        src={item.src}
+        // width={1080}
+        // height={1080}
+        fill
+        objectFit="cover"
+        // data-value={1}
+        objectPosition="center"
+        className={item.classImage && item.classImage}
+        alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+      />
+    </div>
+  ));
 };
 
-function Carousel({
-  imgs,
-  carouselId,
-  classNameCarousel = "",
-  classNameForImage = "",
-  isAutoPlay = true,
-  autoPlayMilliseconds = 5000,
-}: IProps) {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+type Props = {
+  sendItems: TSendItems[];
+  optionCarousel?: AliceCarouselProps;
+  optionCarouselThumbs?: AliceCarouselProps;
+  enabledThumbs?: boolean;
+  thumbContainerClass?: string;
+  // children?: React.ReactNode;
+};
 
-  const handleClickBtn = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    i: number
-  ) => {
-    event.preventDefault();
-    const btn = event.currentTarget;
-    const href = btn.getAttribute("href")!;
-    goToOtherImage(href, carouselId);
-    setActiveIndex(i);
+const Carousel = ({
+  sendItems,
+  optionCarousel,
+  optionCarouselThumbs,
+  enabledThumbs = false,
+  thumbContainerClass,
+}: Props) => {
+  const [mainIndex, setMainIndex] = useState(0);
+  const [mainAnimation, setMainAnimation] = useState(false);
+  const [thumbIndex, setThumbIndex] = useState(0);
+  const [thumbAnimation, setThumbAnimation] = useState(false);
+  const [items] = useState<React.ReactNode[]>(itemsGenerate(sendItems));
+  const [thumbs] = useState<React.ReactNode[]>(
+    thumbItems(sendItems, [setThumbIndex, setThumbAnimation])
+  );
+
+  const slideNext = () => {
+    // console.log("slideNext");
+    // console.log(thumbAnimation);
+    // console.log(thumbIndex);
+    // console.log(thumbs.length);
+    if (!thumbAnimation && thumbIndex < thumbs.length - 1) {
+      setThumbAnimation(true);
+      setThumbIndex(thumbIndex + 1);
+    }
   };
 
-  useEffect(() => {
-    if (isAutoPlay) {
-      const intervalId = setInterval(() => {
-        const newActiveIndex =
-          activeIndex + 1 === imgs.length ? 0 : activeIndex + 1;
-        goToOtherImage(`#XPCarousel_img_${newActiveIndex}`, carouselId);
-        setActiveIndex(newActiveIndex);
-      }, autoPlayMilliseconds);
-      return () => clearInterval(intervalId);
+  const slidePrev = () => {
+    // console.log("slidePrev");
+    // console.log(thumbAnimation);
+    // console.log(thumbIndex);
+    // console.log(thumbs.length);
+    if (!thumbAnimation && thumbIndex > 0) {
+      setThumbAnimation(true);
+      setThumbIndex(thumbIndex - 1);
     }
-  }, [activeIndex, autoPlayMilliseconds, carouselId, imgs.length, isAutoPlay]);
+  };
 
-  return (
-    <div className="relative">
+  const syncMainBeforeChange = (e: EventObject) => {
+    setMainAnimation(true);
+  };
+
+  const syncMainAfterChange = (e: EventObject) => {
+    setMainAnimation(false);
+
+    if (e.type === "action") {
+      setThumbIndex(e.item);
+      setThumbAnimation(false);
+    } else {
+      setMainIndex(thumbIndex);
+    }
+  };
+
+  const syncThumbs = (e: EventObject) => {
+    setThumbIndex(e.item);
+    setThumbAnimation(false);
+
+    if (!mainAnimation) {
+      setMainIndex(e.item);
+    }
+  };
+
+  return [
+    <AliceCarousel
+      key={"images"}
+      activeIndex={mainIndex}
+      animationType="fadeout"
+      autoPlayStrategy="action"
+      // autoPlay
+      disableDotsControls
+      disableButtonsControls
+      infinite
+      items={items}
+      // mouseTracking={!thumbAnimation}
+      onSlideChange={syncMainBeforeChange}
+      onSlideChanged={syncMainAfterChange}
+      touchTracking={!thumbAnimation}
+      {...optionCarousel}
+    />,
+    enabledThumbs && (
       <div
-        id={carouselId}
-        // className={classNames("carousel", classNameCarousel)}
-        className={
-          classNameCarousel
-            ? classNameCarousel + " carousel w-full"
-            : "carousel w-full"
-        }
+        id="carousel-thumbnails"
+        className={thumbContainerClass && thumbContainerClass}
+        key={"thumbnail"}
       >
-        {imgs.map((img, i) => {
-          return (
-            <div
-              key={`XPCarousel_img_${i}`}
-              id={`XPCarousel_img_${i}`}
-              //   className={twMerge(
-              //     "carousel-item w-full bg-center bg-cover bg-no-repeat",
-              //     classNameForImage
-              //   )}
-              className={
-                classNameForImage
-                  ? classNameForImage + " carousel-item w-full relative"
-                  : "carousel-item w-full relative"
-              }
-              //   style={{
-              //     backgroundImage: `url(${img.src})`,
-              //   }}
-            >
-              <Image
-                src={img.src}
-                className="w-full"
-                width={1080}
-                height={1080}
-                alt={`tes${i}`}
-              />
-            </div>
-          );
-        })}
+        <AliceCarousel
+          activeIndex={thumbIndex}
+          autoPlay
+          autoPlayInterval={5000}
+          animationDuration={800}
+          disableDotsControls
+          disableButtonsControls
+          items={thumbs}
+          infinite
+          mouseTracking={true}
+          onSlideChanged={syncThumbs}
+          touchTracking={!mainAnimation}
+          responsive={{
+            0: { items: 3 },
+            768: { items: 4 },
+          }}
+          {...optionCarouselThumbs}
+        />
+        <div className="btn-prev" onClick={slidePrev}>
+          &lang;
+        </div>
+        <div className="btn-next" onClick={slideNext}>
+          &rang;
+        </div>
       </div>
-      {/* <div className="flex justify-center w-full py-2 gap-2  absolute bottom-3">
-        {imgs.map((img, i) => {
-          return (
-            <a
-              onClick={(e) => handleClickBtn(e, i)}
-              key={`XPCarousel_img_point_${i}`}
-              href={`#XPCarousel_img_${i}`}
-              //   className={classNames(
-              //     activeIndex !== i && " opacity-30",
-              //     "btn btn-xs btn-circle"
-              //   )}
-              className={`${
-                activeIndex !== i && "opacity-30 "
-              } btn btn-xs btn-circle`}
-            ></a>
-          );
-        })}
-      </div> */}
-    </div>
-  );
-}
+    ),
+  ];
+  /* return (
+    <AliceCarousel
+      key={"images"}
+      activeIndex={mainIndex}
+      animationType="fadeout"
+      animationDuration={800}
+      // disableDotsControls
+      // disableButtonsControls
+      items={items || []}
+      mouseTracking={!thumbAnimation}
+      onSlideChange={syncMainBeforeChange}
+      onSlideChanged={syncMainAfterChange}
+      touchTracking={!thumbAnimation}
+      {...optionCarousel}
+    >
+      {children}
+    </AliceCarousel>
+  ); */
+};
 
 export default Carousel;
