@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "animate.css";
 import "bear-react-carousel/dist/index.css";
 import type { Metadata } from "next";
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="id" className="scroll-smooth">
       <body className={inter.className}>
         <ClientWrapper>{children}</ClientWrapper>
+        <Analytics />
       </body>
     </html>
   );
