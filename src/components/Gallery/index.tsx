@@ -2,7 +2,7 @@ import Carousel, { TSendItems } from "@/features/Carousel";
 import { googleDriveImage } from "@/helpers/googleToolHelper";
 import { Fade } from "react-awesome-reveal";
 
-const itemLink: TSendItems[] = [
+/* const itemLink: TSendItems[] = [
   {
     type: "image",
     src: googleDriveImage(
@@ -35,7 +35,13 @@ const itemLink: TSendItems[] = [
     ),
     altText: "Bakso Yayasan Padepokan Fatwa Kehidupan tahun 2023 4",
   },
-];
+]; */
+
+const itemLink: TSendItems[] = [...Array(8)].map((_, i) => ({
+  src: "/assets/images/gallery/" + (i + 1) + ".jpg",
+  type: "image",
+  altText: "Baksos Yayasan Padepokan Fatwa Kehidupan Tahun 2024 (" + i + ")",
+}));
 
 function Gallery() {
   return (

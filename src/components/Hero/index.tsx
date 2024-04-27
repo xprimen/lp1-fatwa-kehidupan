@@ -8,13 +8,10 @@ import Image from "next/image";
 import { useCallback } from "react";
 import { Fade } from "react-awesome-reveal";
 
-const slideItems = [
+/* const slideItems = [
   {
     id: 1,
-    imageUrl: googleDriveImage(
-      "https://drive.google.com/file/d/1fTVprGkUXPH9yx4t6Nq_13Xmms_ZRYVG/view?usp=sharing",
-      "w768"
-    ),
+    imageUrl: '/assets/images/hero',
   },
   {
     id: 2,
@@ -23,7 +20,12 @@ const slideItems = [
       "w768"
     ),
   },
-];
+]; */
+
+const slideItems = [...Array(8)].map((_, i) => ({
+  id: i++,
+  imageUrl: "/assets/images/hero/" + i++ + ".jpg",
+}));
 
 const Hero = () => {
   const slideData = useCallback(() => {
