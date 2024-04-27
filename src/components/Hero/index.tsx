@@ -3,7 +3,6 @@ import BearCarousel, {
   BearSlideCard,
   IBearSlideItemData,
   TMoveEffectFn,
-  moveEffectFn,
 } from "bear-react-carousel";
 import Image from "next/image";
 import { useCallback } from "react";
@@ -25,15 +24,6 @@ const slideItems = [
     ),
   },
 ];
-
-{
-  /* <BearSlideImage
-            imageUrl={row.imageUrl}
-            className="animate animate__animated animate__fadeIn animate__slow"
-            imageSize="cover"
-          /> */
-  /*  */
-}
 
 const Hero = () => {
   const slideData = useCallback(() => {
@@ -84,9 +74,6 @@ const Hero = () => {
               src="/assets/images/logo.png"
               height={100}
               width={100}
-              // fill={true}
-              // objectFit="contain"
-              // sizes="(max-width: 768px) 20px, (max-width: 1200px) 100vpx 200px"
               className="w-16 md:w-24 lg:w-36"
               alt="logo"
             />
@@ -97,14 +84,6 @@ const Hero = () => {
           // moveFn: moveEffectFn.transformY(0),
           moveFn: mainMoveEffectFn,
         }}
-        // isDebug
-        /* breakpoints={{
-            768: {
-              slidesPerView: 1,
-              isEnablePagination: false,
-              isEnableNavButton: false,
-            },
-          }} */
       />
 
       <div className="absolute inset-0 flex justify-center py-16 px-8 items-center bg-black/55 text-white md:bg-transparent md:from-black/75 md:to-black/30 md:bg-gradient-to-r">
@@ -115,8 +94,6 @@ const Hero = () => {
                 src="/assets/images/logo.png"
                 height={1080}
                 width={1080}
-                // objectPosition="center"
-                // objectFit="contain"
                 alt="logo"
                 className="bg-white rounded-full p-1 w-20 md:w-48 lg:w-64 xl:w-72 shadow-lg"
               />
@@ -133,15 +110,7 @@ const Hero = () => {
               <h1 className="text-3xl font-extrabold sm:text-3xl md:text-4xl xl:text-6xl">
                 Yayasan Padepokan Fatwa Kehidupan
                 <strong className="block font-extrabold text-green-500">
-                  {/* <Fade
-                    cascade
-                    direction="right"
-                    duration={200}
-                    delay={500}
-                    damping={0.5}
-                  > */}
                   Bersama Kita Bisa
-                  {/* </Fade> */}
                 </strong>
               </h1>
               <p className="text-lg/relaxed">

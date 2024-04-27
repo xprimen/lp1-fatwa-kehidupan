@@ -14,16 +14,7 @@ function JenisBantuan() {
         <Fade direction="up" duration={1000} cascade triggerOnce>
           <div className="card bg-white shadow-lg">
             <div className="card-body items-center space-y-4">
-              <Icon
-                path={mdiHandCoin}
-                title="Zakat"
-                size={2}
-                //   horizontal
-                //   vertical
-                //   rotate={90}
-                color="primary"
-                //   spin
-              />
+              <Icon path={mdiHandCoin} title="Zakat" size={2} color="primary" />
               <h3 className="text-2xl font-bold">ZAKAT</h3>
               <p className="text-lg/relaxed text-center">
                 Tunaikan Zakat Anda, kami yang akan Salurkan dengan Amanah serta
@@ -37,11 +28,7 @@ function JenisBantuan() {
                 path={mdiAccountCashOutline}
                 title="INFAQ"
                 size={2}
-                //   horizontal
-                //   vertical
-                //   rotate={90}
                 color="primary"
-                //   spin
               />
               <h3 className="text-2xl font-bold">INFAQ</h3>
               <p className="text-lg/relaxed text-center">
@@ -56,11 +43,7 @@ function JenisBantuan() {
                 path={mdiCash100}
                 title="SEDEKAH"
                 size={2}
-                //   horizontal
-                //   vertical
-                //   rotate={90}
                 color="primary"
-                //   spin
               />
               <h3 className="text-2xl font-bold">SEDEKAH</h3>
               <p className="text-lg/relaxed text-center">
@@ -75,11 +58,7 @@ function JenisBantuan() {
                 path={mdiLandslideOutline}
                 title="WAKAF"
                 size={2}
-                //   horizontal
-                //   vertical
-                //   rotate={90}
                 color="primary"
-                //   spin
               />
               <h3 className="text-2xl font-bold">WAKAF</h3>
               <p className="text-lg/relaxed text-center">

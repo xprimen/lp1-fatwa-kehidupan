@@ -1,6 +1,5 @@
-import { mdiHandHeart, mdiLandslideOutline } from "@mdi/js";
+import { mdiHandHeart } from "@mdi/js";
 import Icon from "@mdi/react";
-import React from "react";
 import { Fade } from "react-awesome-reveal";
 
 function SummaryBaksos() {

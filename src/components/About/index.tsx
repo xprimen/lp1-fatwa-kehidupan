@@ -1,11 +1,4 @@
-import {
-  mdiEarth,
-  mdiFacebook,
-  mdiGlobeLightOutline,
-  mdiGlobeModel,
-  mdiInstagram,
-  mdiYoutube,
-} from "@mdi/js";
+import { mdiEarth, mdiFacebook, mdiInstagram, mdiYoutube } from "@mdi/js";
 import Icon from "@mdi/react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";

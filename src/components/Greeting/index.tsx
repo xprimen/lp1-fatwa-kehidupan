@@ -1,6 +1,5 @@
 import { googleDriveImage } from "@/helpers/googleToolHelper";
 import Image from "next/image";
-import React from "react";
 import { Fade } from "react-awesome-reveal";
 
 function Greeting() {

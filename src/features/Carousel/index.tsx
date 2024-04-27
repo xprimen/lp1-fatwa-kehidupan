@@ -1,10 +1,9 @@
 "use client";
-import { googleDriveImage } from "@/helpers/googleToolHelper";
 import Image from "next/image";
-import React, { PropsWithChildren, useState } from "react";
+import React, { useState } from "react";
 import AliceCarousel, {
-  EventObject,
   Props as AliceCarouselProps,
+  EventObject,
 } from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./carouselAdd.css";
@@ -14,25 +13,8 @@ export type TSendItems = {
   src: string;
   classWrapper?: string;
   classImage?: string;
+  altText?: string;
 };
-
-/* const items: React.ReactNode[] = [
-  <div key={0} className="item" data-value="1">
-    1
-  </div>,
-  <div key={1} className="item" data-value="2">
-    2
-  </div>,
-  <div key={2} className="item" data-value="3">
-    3
-  </div>,
-  <div key={3} className="item" data-value="4">
-    4
-  </div>,
-  <div key={4} className="item" data-value="5">
-    5
-  </div>,
-]; */
 
 const thumbItems = (
   items: TSendItems[],
@@ -56,7 +38,7 @@ const thumbItems = (
         // data-value={1}
         objectPosition="center"
         className={item.classImage && item.classImage}
-        alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+        alt={item.altText || ""}
       />
     </div>
   ));
@@ -74,7 +56,7 @@ const itemsGenerate = (items: TSendItems[]): React.ReactNode[] => {
         // data-value={1}
         objectPosition="center"
         className={item.classImage && item.classImage}
-        alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
+        alt={item.altText || ""}
       />
     </div>
   ));

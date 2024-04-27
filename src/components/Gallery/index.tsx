@@ -1,44 +1,6 @@
 import Carousel, { TSendItems } from "@/features/Carousel";
 import { googleDriveImage } from "@/helpers/googleToolHelper";
-import Image from "next/image";
-import { Link } from "react-alice-carousel";
 import { Fade } from "react-awesome-reveal";
-
-const items = [
-  <div key={1} className="w-full h-[700px]">
-    <Image
-      key={0}
-      src={googleDriveImage(
-        "https://drive.google.com/file/d/14StlZD7jG361mXfHfPJaafgn5mfw8saI/view?usp=sharing",
-        "w1080"
-      )}
-      // width={1080}
-      // height={1080}
-      fill
-      objectFit="cover"
-      // data-value={1}
-      objectPosition="center"
-      className="rounded-xl"
-      alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
-    />
-  </div>,
-  <div key={1} className="w-full h-[700px]">
-    <Image
-      src={googleDriveImage(
-        "https://drive.google.com/file/d/1fTVprGkUXPH9yx4t6Nq_13Xmms_ZRYVG/view?usp=sharing",
-        "w1080"
-      )}
-      // width={1080}
-      // height={1080}
-      fill
-      objectFit="cover"
-      // data-value={2}
-      objectPosition="center"
-      className="rounded-xl"
-      alt="Baksos Yayasan Fatwa Kehidupan Sub Majelis Wilayah Ogan Komering Ulu"
-    />
-  </div>,
-];
 
 const itemLink: TSendItems[] = [
   {
@@ -47,6 +9,7 @@ const itemLink: TSendItems[] = [
       "https://drive.google.com/file/d/14StlZD7jG361mXfHfPJaafgn5mfw8saI/view?usp=sharing",
       "w1080"
     ),
+    altText: "Bakso Yayasan Padepokan Fatwa Kehidupan tahun 2023 1",
   },
   {
     type: "image",
@@ -54,6 +17,7 @@ const itemLink: TSendItems[] = [
       "https://drive.google.com/file/d/1fTVprGkUXPH9yx4t6Nq_13Xmms_ZRYVG/view?usp=sharing",
       "w1080"
     ),
+    altText: "Bakso Yayasan Padepokan Fatwa Kehidupan tahun 2023 2",
   },
   {
     type: "image",
@@ -61,6 +25,7 @@ const itemLink: TSendItems[] = [
       "https://drive.google.com/file/d/1XObYOiSNZwEnnc2wO9jVrsa48jGBw-Ad/view?usp=sharing",
       "w1080"
     ),
+    altText: "Bakso Yayasan Padepokan Fatwa Kehidupan tahun 2023 3",
   },
   {
     type: "image",
@@ -68,6 +33,7 @@ const itemLink: TSendItems[] = [
       "https://drive.google.com/file/d/1hOUD8NTokpoVSD5PEbBmcj-oR_Zlh3SR/view?usp=sharing",
       "w1080"
     ),
+    altText: "Bakso Yayasan Padepokan Fatwa Kehidupan tahun 2023 4",
   },
 ];
 

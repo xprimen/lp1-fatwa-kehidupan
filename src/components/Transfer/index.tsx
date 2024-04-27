@@ -1,24 +1,15 @@
-import { googleDriveImage } from "@/helpers/googleToolHelper";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 const bankList = [
   {
     image: "mandiri.png",
-    // imageW: "180",
-    // imageH: "80",
-    // objectX: "96%",
-    // objectY: "0%",
     title: "A.N. Yayasan Padepokan Fatwa Kehidupan",
     norek: "165-001-357-999-1",
   },
   {
     image: "bri.png",
-    // imageW: "160",
-    // imageH: "80",
-    // objectX: "60%",
-    // objectY: "0%",
     title: "A.N. Yayasan Padepokan Fatwa Kehidupan",
     norek: "12080-10000-89565",
   },
@@ -51,7 +42,6 @@ function Transfer() {
     navigator.clipboard.writeText(norek);
     setNotifCopy(true);
     setIdCopy(id);
-    // return;
     setTimeout(() => {
       setNotifCopy(false);
       setIdCopy(0);
@@ -73,22 +63,9 @@ function Transfer() {
               key={i.toString()}
               className={`rounded-lg flex items-center flex-col px-8 py-4 gap-4 shadow-md`}
             >
-              {/* <Image
-              src="/assets/images/payment.png"
-              width={500}
-              height={500}
-              // fill
-              // objectFit="cover"
-              // objectPosition="15%"
-              alt="payment"
-              className={`w-[${d.imageW}px] h-[${d.imageH}px] object-left-top object-none object-[${d.objectX}_${d.objectY}]`}
-              // className={`w-[${d.imageW}] h-[${d.imageH}] object-none object-[60%_0%]`}
-            /> */}
               <div className="flex justify-center items-center flex-1">
                 <Image
                   src={"/assets/images/payment/" + d.image}
-                  // fill
-                  // objectFit="contain"
                   width={500}
                   height={500}
                   alt={d.image.replace(".png", "")}
