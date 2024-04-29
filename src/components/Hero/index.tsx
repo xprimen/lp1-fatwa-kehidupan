@@ -128,7 +128,7 @@ const Hero = () => {
                 </a>
                 <a
                   href="#transfer"
-                  className="rounded bg-green-600 px-12 py-3 text-md font-medium text-white shadow hover:bg-green-700 focus:outline-none focus:ring active:bg-green-500 animate__delay-1s animate__infinite animate__pulse animate__animated"
+                  className="rounded bg-primary px-12 py-3 text-md font-medium text-white shadow hover:bg-green-700 focus:outline-none focus:ring active:bg-primary animate__delay-1s animate__infinite animate__pulse animate__animated"
                 >
                   Berdonasi
                 </a>

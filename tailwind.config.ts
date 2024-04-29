@@ -34,7 +34,16 @@ const config: Config = {
     },
   },
   daisyui: {
-    themes: ["acid"],
+    themes: [
+      {
+        acid: {
+          ...require("daisyui/src/theming/themes")["acid"],
+          primary: "#30a33e",
+          secondary: "#151e3f",
+          accent: "#BDCDC0",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };
