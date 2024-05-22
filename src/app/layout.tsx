@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Yayasan Padepokan Fatwa Kehidupan",
   description: "Landing Page 1 Fatwa Kehidupan",
   icons: "logo.ico",
+  verification: {
+    google: "2KkJNNG_yofrJFRcazQf9DRoowjpb0MYZzwRhw7kA1U",
+  },
 };
 
 export default function RootLayout({
